@@ -16,11 +16,6 @@ body {
 	box-sizing: border-box; 
 }
 
-.form-control {
-    position: relative;
-    margin-bottom: 0.5rem;
-}
-
 #input { 
 	border: none;
 	padding: 0 1rem;

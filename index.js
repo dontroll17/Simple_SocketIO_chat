@@ -30,8 +30,6 @@ app.get('/', (req, res) => {
  **/
 io.on('connection', (socket) => {
 	users.push(socket.id);
-	console.log(users);
-
 	socket.on('chat message', (msg) => {
 		io.emit('chat message',`${socket.id}: ${msg}`);
 		bot.telegram.sendMessage(botConfig.sender, msg);
@@ -39,7 +37,6 @@ io.on('connection', (socket) => {
   	socket.on('disconnect', () => {
   		io.emit('chat message',`${socket.id} disconnected`)
   		removeUser(users, socket.id);
-  		console.log(users);
   	});
 });
 
@@ -47,13 +44,14 @@ io.on('connection', (socket) => {
 /**
  * Chat bot handlers
  **/
-process.once('SIGINT', () => bot.stop('SIGINT'))
-process.once('SIGTERM', () => bot.stop('SIGTERM'))
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
 
 /**
  *Start server
  **/
 server.listen(port, () => console.log(`listening on ${port}`));
+
 
 
 const removeUser = (array, id) => {

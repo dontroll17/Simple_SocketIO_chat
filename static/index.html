@@ -8,15 +8,33 @@
 </head>
 <body>
 	
-	<ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button class="btn">Send</button>
-    </form>
+	<div id="app">
+		
+		<ul id="messages">
+			<li 
+				:key="message + index"
+				v-for="(message, index) in MessagesList">
+				{{message}}
+			</li>
+		</ul>
+
+	    <div id="form">
+	     	<input 
+	     		id="input" 
+	     		v-model="inputValue"
+	     	/>
+	     	<button 
+	     		class="btn"
+	     		@click="sendMessage"
+	     	>Send</button>
+	    </div>
 	
+	</div>
 
 
     <script src="/socket.io/socket.io.js"></script>
-	<script src='/main.js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="main.js"></script>
 
 </body>
 </html>
