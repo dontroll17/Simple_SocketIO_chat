@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
 	console.log(users);
 
 	socket.on('chat message', (msg) => {
-		io.emit('chat message',`${socket.id}: msg`);
+		io.emit('chat message',`${socket.id}: ${msg}`);
 		bot.telegram.sendMessage(botConfig.sender, msg);
   	});
   	socket.on('disconnect', () => {
