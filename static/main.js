@@ -12,7 +12,7 @@ const app = new Vue({
 			this.inputValue = '';
 		}
 	}
-})
+});
 
 const socket = io();
 socket.on('chat message', msg => {

@@ -35,8 +35,8 @@ io.on('connection', (socket) => {
 		bot.telegram.sendMessage(botConfig.sender, msg);
   	});
   	socket.on('disconnect', () => {
-  		io.emit('chat message',`${socket.id} disconnected`)
-  		removeUser(users, socket.id);
+  		io.emit('chat message',`${socket.id} disconnected`);
+  		users.splice(users.indexOf(socket));
   	});
 });
 
@@ -51,13 +51,3 @@ process.once('SIGTERM', () => bot.stop('SIGTERM'));
  *Start server
  **/
 server.listen(port, () => console.log(`listening on ${port}`));
-
-
-
-const removeUser = (array, id) => {
-	for(let i = 0; i < array.length; i++){
-		if(array[i] === id){
-			array.splice(i, 1);
-		}
-	}
-}
