@@ -15,11 +15,6 @@
 				:key="message + index"
 				v-for="(message, index) in MessagesList">
 				{{message}}
-				<div 
-					class="btn" 
-					@click="removeMessage(index)"
-				>DELETE
-				</div>
 			</li>
 		</ul>
 
